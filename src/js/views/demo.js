@@ -7,7 +7,6 @@ import "../../styles/demo.scss";
 
 export const Demo = () => {
 	const { store, actions } = useContext(Context);
-
 	return (
 		<div className="container">
 			<ul className="list-group">
@@ -27,7 +26,7 @@ export const Demo = () => {
 									Check store/flux.js scroll to the actions to see the code
 								</p>
 							) : null}
-							<button className="btn btn-success" onClick={() => actions.changeColor(index, "orange")}>
+							<button className="btn btn-success" onClick={() => actions.loadSomeData()}>
 								Change Color
 							</button>
 						</li>

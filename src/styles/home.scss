@@ -1,0 +1,37 @@
+.content{
+    padding: 3% 8%;
+
+    h1{
+        margin-bottom: 2%
+    }
+
+    .row{
+        width: 100%;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+
+        .content-card{
+            margin-right: 5%;
+
+            .card{
+                width: 18rem;
+
+                .line-btn{
+                    display: flex;
+                    justify-content: space-between;
+
+                    .like{
+                        color: rgb(204, 204, 38);
+                    }
+
+                    .like:hover{
+                        cursor: pointer;
+                    }
+                }
+
+            }
+        }        
+    }
+}
+
+
