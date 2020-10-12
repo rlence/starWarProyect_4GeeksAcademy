@@ -48,6 +48,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(err => {
 						console.log(err);
 					});
+			},
+			saveFavorites(favorites) {
+				setStore({ favorites: favorites });
 			}
 		}
 	};

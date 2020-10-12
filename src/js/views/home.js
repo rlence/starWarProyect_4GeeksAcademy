@@ -14,7 +14,9 @@ export const Home = () => {
 	}, []);
 
 	const likeCharacterOrPlanet = element => {
-		console.log(element);
+		const listFavorites = store.favorites;
+		listFavorites.push(element);
+		actions.saveFavorites(listFavorites);
 	};
 
 	return (

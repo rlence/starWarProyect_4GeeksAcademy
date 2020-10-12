@@ -4,8 +4,6 @@ import "../../styles/home.scss";
 
 function Card(props) {
 	const character = props.character;
-	console.log(character);
-
 	return (
 		<div className="card">
 			<img src={character.url} className="card-img-top" alt={character.name} />
