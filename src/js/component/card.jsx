@@ -6,7 +6,11 @@ function Card(props) {
 	const character = props.character;
 	return (
 		<div className="card">
-			<img src={character.url} className="card-img-top" alt={character.name} />
+			<img
+				src="https://cdn.pixabay.com/photo/2012/04/26/19/43/profile-42914_960_720.png"
+				className="card-img-top"
+				alt={character.name}
+			/>
 			<div className="card-body">
 				<h5 className="card-title">{character.name}</h5>
 				<p className="card-text">Gender: {character.gender} </p>
@@ -14,8 +18,8 @@ function Card(props) {
 				<p className="card-text">Eye Color: {character.eye_color} </p>
 				<div className="line-btn">
 					<p className="btn btn-outline-primary">Learn more!</p>
-					<p className="like" onClick={e => props.likeCharacterOrPlanet(character)}>
-						LIKE
+					<p className="btn btn-outline-warning" onClick={e => props.likeCharacterOrPlanet(character)}>
+						{props.conditioanRender(character.name)}
 					</p>
 				</div>
 			</div>
@@ -25,7 +29,8 @@ function Card(props) {
 
 Card.propTypes = {
 	character: PropTypes.object,
-	likeCharacterOrPlanet: PropTypes.func
+	likeCharacterOrPlanet: PropTypes.func,
+	conditioanRender: PropTypes.func
 };
 
 export default Card;

@@ -2,13 +2,15 @@
     padding: 3% 8%;
 
     h1{
-        margin-bottom: 2%
+        margin-bottom: 2%;
+        color: red;
     }
 
     .row{
         width: 100%;
         flex-wrap: nowrap;
         overflow-x: auto;
+        margin-bottom: 5%;
 
         .content-card{
             margin-right: 5%;
@@ -20,11 +22,7 @@
                     display: flex;
                     justify-content: space-between;
 
-                    .like{
-                        color: rgb(204, 204, 38);
-                    }
-
-                    .like:hover{
+                    .btn:hover{
                         cursor: pointer;
                     }
                 }
