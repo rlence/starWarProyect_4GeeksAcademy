@@ -17,7 +17,9 @@ function Card(props) {
 				<p className="card-text">Heir Color: {character.hair_color} </p>
 				<p className="card-text">Eye Color: {character.eye_color} </p>
 				<div className="line-btn">
-					<p className="btn btn-outline-primary">Learn more!</p>
+					<p className="btn btn-outline-primary" onClick={() => props.learnMore(character, "people")}>
+						Learn more!
+					</p>
 					<p className="btn btn-outline-warning" onClick={e => props.likeCharacterOrPlanet(character)}>
 						{props.conditioanRender(character.name)}
 					</p>
@@ -30,7 +32,8 @@ function Card(props) {
 Card.propTypes = {
 	character: PropTypes.object,
 	likeCharacterOrPlanet: PropTypes.func,
-	conditioanRender: PropTypes.func
+	conditioanRender: PropTypes.func,
+	learnMore: PropTypes.func
 };
 
 export default Card;

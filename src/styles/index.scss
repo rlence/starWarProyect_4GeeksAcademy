@@ -1,3 +1,32 @@
 /* 
     General Styles
 */
+
+.navbar{
+    background-color: rgb(241, 240, 240) !important;
+    .display-block{
+        display: block;
+    }
+
+    .count{
+        background-color: rgb(148, 147, 147);
+        padding: 4%;
+    }
+
+    .dropdown{
+        padding-right: 8%;
+
+        .dropdown-item{
+            color: blue;
+        }
+        .icon{
+            margin-left: 10%;
+            color: black;
+        }
+
+        .icon:hover{
+            cursor: pointer;
+        }
+    }
+}
+

@@ -1,16 +1,14 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				}
-			],
 			characters: [],
 			planets: [],
-			favorites: []
+			favorites: [],
+			url: "",
+			type: "",
+			element: {
+				name: ""
+			}
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -51,6 +49,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			saveFavorites(favorites) {
 				setStore({ favorites: favorites });
+			},
+			saveUrlToDetail(url, type) {
+				setStore({ url: url, type: type });
+			},
+			getDetailElement(url) {
+				fetch(url, {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json"
+					}
+				})
+					.then(res => {
+						return res.json();
+					})
+					.then(data => {
+						setStore({ element: data });
+					})
+					.catch(err => {
+						console.log(err);
+					});
 			}
 		}
 	};

@@ -1,12 +1,15 @@
 import React, { useState, useEffect, useContext } from "react";
 import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.scss";
+import { Redirect } from "react-router-dom";
 
 import Card from "../component/card.jsx";
 import { Context } from "../store/appContext";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
+
+	const [redirect, setRedirect] = useState(false);
 
 	useEffect(() => {
 		actions.loadSomeData();
@@ -19,21 +22,25 @@ export const Home = () => {
 	};
 
 	const conditioanRender = name => {
-		console.log(store.favorites);
-
 		if (store.favorites.length > 0) {
 			for (let index = 0; index < store.favorites.length; index++) {
 				if (store.favorites[index].name === name) {
-					console.log(true);
 					return <i className="fas fa-heart" />;
 				} else {
-					console.log(false);
 					return <i className="far fa-heart" />;
 				}
 			}
 		} else {
 			return <i className="far fa-heart" />;
 		}
+	};
+
+	const learnMore = (element, type) => {
+		console.log(type);
+		const substacUrl = element.url.substr(4, element.url.length - 4);
+		const url = "https" + substacUrl;
+		actions.saveUrlToDetail(url, type);
+		setRedirect(true);
 	};
 
 	return (
@@ -46,6 +53,7 @@ export const Home = () => {
 							character={character}
 							likeCharacterOrPlanet={likeCharacterOrPlanet}
 							conditioanRender={conditioanRender}
+							learnMore={learnMore}
 						/>
 					</div>
 				))}
@@ -65,7 +73,9 @@ export const Home = () => {
 								<p className="card-text">Population: {planet.population} </p>
 								<p className="card-text">Terrain: {planet.terrain} </p>
 								<div className="line-btn">
-									<p className="btn btn-outline-primary">Learn more!</p>
+									<p className="btn btn-outline-primary" onClick={() => learnMore(planet, "planet")}>
+										Learn more!
+									</p>
 									<p className="btn btn-outline-warning" onClick={e => likeCharacterOrPlanet(planet)}>
 										{conditioanRender(planet.name)}
 									</p>
@@ -75,6 +85,7 @@ export const Home = () => {
 					</div>
 				))}
 			</div>
+			{redirect ? <Redirect to="/demo" /> : null}
 		</div>
 	);
 };
